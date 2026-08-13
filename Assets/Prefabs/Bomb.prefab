@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   _range: 5
-  _force: 500
+  _force: 400
   _minExplosionTime: 2
   _maxExplosionTime: 5
 --- !u!54 &8882138799611931833

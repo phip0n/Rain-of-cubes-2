@@ -1,25 +1,23 @@
 using TMPro;
 using UnityEngine;
 
-public class Display : MonoBehaviour
+public class Display<T> : MonoBehaviour where T : MonoBehaviour, ISpawnable
 {
+    [SerializeField] private Spawner<T> _spawner;
     [SerializeField] private TMP_Text _creationsText;
     [SerializeField] private TMP_Text _poolText;
     [SerializeField] private TMP_Text _activeText;
 
-    private SpawnerInfo _spawnerInfo;
+    private void OnEnable()
+    {
+        _spawner.CountChanged += ShowCreationsCount;
+        _spawner.ActiveCountChanged += ShowPoolInfo;
+    }
 
     private void OnDisable()
     {
-        _spawnerInfo.CountChanged -= ShowCreationsCount;
-        _spawnerInfo.ActiveCountChanged -= ShowPoolInfo;
-    }
-
-    public void SetSpawnerInfo(SpawnerInfo spawnerInfo)
-    {
-        _spawnerInfo = spawnerInfo;
-        _spawnerInfo.CountChanged += ShowCreationsCount;
-        _spawnerInfo.ActiveCountChanged += ShowPoolInfo;
+        _spawner.CountChanged -= ShowCreationsCount;
+        _spawner.ActiveCountChanged -= ShowPoolInfo;
     }
 
     public void ShowCreationsCount(int count)
