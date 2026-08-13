@@ -1,3 +1,3 @@
-public class BombsDisplay : Display<Bomb>
+public class BombsDisplay : SpawnerDisplay<Bomb>
 {
 }

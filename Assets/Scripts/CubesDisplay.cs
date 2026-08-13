@@ -1,3 +1,3 @@
-public class CubesDisplay : Display<Cube>
+public class CubesDisplay : SpawnerDisplay<Cube>
 {
 }
